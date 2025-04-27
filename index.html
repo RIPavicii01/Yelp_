@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>distilgpt2-tiny-chatbot</title>
+  <meta name="viewport" content="width=480, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chatbot-container">
+    <header class="chatbot-header">
+      <div class="profile">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI Avatar" />
+        <div>
+          <h1>distilgpt2-tiny-chatbot</h1>
+          <div class="subtitle">장형준 · 2022143032</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span>프로젝트명</span>
+        <b>distilgpt2-tiny-chatbot</b>
+      </div>
+    </header>
+    <div id="chat-box" class="chat-box"></div>
+    <form id="chat-form" autocomplete="off">
+      <input id="user-input" type="text" placeholder="메시지를 입력하세요..." maxlength="100" />
+      <button type="submit" title="전송">
+        <span>➤</span>
+      </button>
+    </form>
+  </div>
+  <script src="chat.js"></script>
+</body>
+</html>
