@@ -1,136 +1,86 @@
-# 감정 분석 API 프로젝트
+# distilgpt2-tiny-chatbot
 
-**이름:** 장형준  
-**학번:** 2022143032
-
----
-
-## 프로젝트 개요
-
-이 프로젝트는 FastAPI와 HuggingFace Transformers를 활용한 감정 분석 REST API와  
-HTML/JS 기반의 간단한 프론트엔드를 제공합니다.
-
-- 사용자는 웹페이지에서 텍스트(리뷰 등)를 입력하면
-- FastAPI 서버가 감정 분석 모델로 예측을 수행해
-- 별점(1~5점) 및 신뢰도를 반환합니다.
-
-
-## 🛠️ 사용 기술
-
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"/>
-<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white"/>
-
+> **장형준 | 2022143032**
+>
+> FastAPI와 Hugging Face의 경량 챗봇 모델, 그리고 HTML/CSS/JS 프론트엔드로 만든 심플 AI 챗봇 프로젝트
 
 ---
 
-## 주요 기술 스택
+## 🛠️ 사용한 언어 & 기술 스택
 
-- **Backend:** FastAPI, Transformers, PyTorch
-- **Frontend:** HTML, CSS, JavaScript (fetch API)
-- **모델:** 사전학습 BERT 기반 감정 분석 모델
-
----
-
-## 폴더 구조
-
-
-<pre>      ├── app/
-      │   ├── main.py # FastAPI 서버 및 감정 분석 API 
-      │   └── sentiment_model/ # 저장된 모델 파일 (config.json, pytorch_model.bin, tokenizer 등) 
-      ├── index.html # 프론트엔드 (HTML/JS) 
-      ├── requirements.txt 
-      └── README.md </pre>
-
-
-
-
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white"/>
+  <img src="https://img.shields.io/badge/HuggingFace-FFD21F?style=flat&logo=huggingface&logoColor=black"/>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
+</p>
 
 ---
 
-## 실행 방법
+## 📌 프로젝트 소개
 
-### 1. 패키지 설치
-
-pip install -r requirements.txt
-
-
-### 2. FastAPI 서버 실행
-
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
-
-
-### 3. 프론트엔드 실행
-
-- `index.html` 파일을 브라우저에서 직접 열기 (더블클릭)
-- 또는 간단한 로컬 서버에서 실행
+- **distilgpt2-tiny-chatbot**은 FastAPI와 Hugging Face의 초경량 챗봇 모델(`ethzanalytics/distilgpt2-tiny-conversational`)을 활용한 간단한 AI 챗봇입니다.
+- 프론트엔드는 HTML, CSS, JavaScript만으로 구현되어 누구나 쉽게 실행할 수 있습니다.
+- 인삿말, 간단한 영어 대화, 챗봇 데모에 적합합니다.
 
 ---
 
-## API 사용 예시
+## 🚀 설치 및 실행 방법
 
-### 엔드포인트
+### 1. 백엔드(FastAPI) 실행
 
-- **POST** `/predict`
+- 필수 패키지 설치
+    pip install fastapi uvicorn transformers torch
 
-### 요청 예시
+- 서버 실행
+uvicorn main:app --reload
 
-{
-"text": "The food was delicious and the staff was friendly"
-}
+### 2. 프론트엔드 실행
 
-
-### 응답 예시
-
-[
-{
-"label": "LABEL_4",
-"score": 0.4660353362560272
-}
-]
-
+- `index.html`, `style.css`, `chat.js`를 같은 폴더에 두고,  
+  `index.html`을 브라우저에서 더블클릭(또는 Live Server 등으로 실행)
 
 ---
 
-## 프론트엔드 예시 화면
+## 🗂️ 폴더 구조
 
-- 이름: 장형준
-- 학번: 2022143032
-- 텍스트 입력 → "분석하기" 클릭 → 분석 결과(별점/신뢰도) 표시
+├── main.py # FastAPI 백엔드 (챗봇 API)
 
----
+├── index.html # 프론트엔드 HTML
 
-## CORS 설정
+├── style.css # 프론트엔드 CSS
 
-FastAPI 코드에 아래와 같이 CORS 미들웨어가 추가되어 있습니다.
+├── chat.js # 프론트엔드 JS
 
-
-
-from fastapi.middleware.cors import CORSMiddleware
-
-app.add_middleware(
-CORSMiddleware,
-allow_origins=[""], # 개발용 전체 허용, 배포 시에는 도메인 지정
-allow_credentials=True,
-allow_methods=[""],
-allow_headers=["*"],
-)
-
-
+└── README.md
 
 ---
 
-## 참고
+## 💬 주요 기능
 
-- 모델은 반드시 `app/sentiment_model` 폴더에 있어야 하며,  
-  내부에 `config.json`, `pytorch_model.bin`, `tokenizer.json` 등이 포함되어야 합니다.
-- 서버와 프론트엔드의 포트가 다르면 fetch 주소(`http://127.0.0.1:8001/predict`)를 맞춰주세요.
+- FastAPI 기반 REST 챗봇 API (`/chat/`)
+- Hugging Face 경량 챗봇 모델 사용
+- HTML/CSS/JS 프론트엔드, 반응형 디자인, 말풍선 UI
+- 실시간 채팅, AI 응답 대기 애니메이션, 프로젝트/사용자 정보 표시
 
 ---
 
-## 라이선스
+## 🙋🏻‍♂️ 개발자
 
-MIT License
+- **이름:** 장형준  
+- **학번:** 2022143032
 
+---
+
+## 📄 라이선스
+
+- 본 프로젝트는 MIT 라이선스를 따릅니다.
+
+---
+
+## ⭐️ 기타
+
+- 더 자연스러운 챗봇이 필요하다면 모델만 교체해서 사용할 수 있습니다.
+- 문의/기여는 Pull Request 또는 Issue로 남겨주세요.
